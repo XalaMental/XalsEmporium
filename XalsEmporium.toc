@@ -1,0 +1,30 @@
+## Interface: 120100, 120105, 120107, 120007
+## Title: Xal's Emporium
+## Version: @project-version@
+## Notes: A housing-decor collection tracker - finds every decor item you're missing and where to get it.
+## Author: XalaMental
+## X-License: All Rights Reserved
+## X-Curse-Project-ID: 1706554
+## SavedVariables: XalsEmporiumDB
+## SavedVariablesPerCharacter: XalsEmporiumCharDB
+## IconTexture: Interface\AddOns\XalsEmporium\Icon.png
+## OptionalDeps: XalsKeep
+
+libs\LibStub\LibStub.lua
+libs\CallbackHandler\CallbackHandler-1.0.lua
+libs\LibDataBroker\LibDataBroker-1.1.lua
+libs\LibDBIcon\LibDBIcon-1.0.lua
+
+Bootstrap.lua
+BrandStyle.lua
+WhatsNew.lua
+DecorSources.lua
+DecorData.lua
+DecorDetail.lua
+CollectionWindow.lua
+DecorZoneAlertIcon.lua
+SettingsPanel.lua
+MinimapButton.lua
+Engine.lua
+ChatCommands.lua
+
