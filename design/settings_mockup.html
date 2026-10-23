@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Xal's Emporium — Settings Mockup</title>
+<style>
+  :root {
+    --bg: #08070f;
+    --header: #681417;
+    --divider: #101020;
+    --unselected: #323264;
+    --body-text: #999999;
+    --dim-text: #7a7a86;
+  }
+  * { box-sizing: border-box; }
+  body {
+    background: #3a3a48;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 40px 20px;
+    font-family: 'Segoe UI', Arial, sans-serif;
+  }
+  #window {
+    width: 640px;
+    height: 480px;
+    background: var(--bg);
+    border: 4px solid var(--divider);
+    position: relative;
+    box-shadow: 0 0 0 1px #000, 0 0 40px rgba(0,0,0,0.6);
+  }
+  #title {
+    position: absolute;
+    top: 20px;
+    left: 0;
+    right: 0;
+    text-align: center;
+    font-family: Georgia, 'Times New Roman', serif;
+    font-weight: bold;
+    font-size: 26px;
+    letter-spacing: 1px;
+    color: var(--header);
+    text-shadow: 4px -4px 0 #000;
+  }
+  #closeBtn {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    color: var(--header);
+    font-size: 14px;
+    cursor: pointer;
+    font-family: Georgia, serif;
+  }
+  #closeBtn:hover { color: #fff; }
+  #headerDivider {
+    position: absolute;
+    top: 80px;
+    left: 14px;
+    right: 14px;
+    height: 3px;
+    background: var(--header);
+  }
+  #sidebar {
+    position: absolute;
+    top: 112px;
+    left: 14px;
+    bottom: 14px;
+    width: 132px;
+  }
+  .tab {
+    display: block;
+    width: 100%;
+    padding: 6px 8px;
+    margin-bottom: 4px;
+    background: none;
+    border: none;
+    text-align: left;
+    font-size: 14px;
+    color: var(--unselected);
+    cursor: pointer;
+    font-family: 'Segoe UI', Arial, sans-serif;
+  }
+  .tab:hover { color: #9a9ad0; }
+  .tab.selected { color: var(--header); font-weight: 600; }
+  #vDivider {
+    position: absolute;
+    top: 112px;
+    bottom: 14px;
+    left: 156px;
+    width: 3px;
+    background: var(--divider);
+  }
+  #content {
+    position: absolute;
+    top: 112px;
+    left: 182px;
+    right: 14px;
+    bottom: 38px;
+    overflow-y: auto;
+  }
+  #footer {
+    position: absolute;
+    bottom: 12px;
+    left: 182px;
+    right: 14px;
+    text-align: center;
+    font-size: 11px;
+    color: var(--dim-text);
+  }
+
+  /* Home page */
+  .home-icon {
+    width: 72px;
+    height: 72px;
+    margin: 0 auto 12px;
+    background: var(--header);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+  }
+  .home-lead {
+    text-align: center;
+    font-size: 17px;
+    color: var(--header);
+    font-weight: 600;
+    margin-bottom: 10px;
+    padding: 0 20px;
+  }
+  .home-rule {
+    width: 50px;
+    height: 2px;
+    background: var(--header);
+    margin: 0 auto 14px;
+  }
+  .home-body {
+    text-align: center;
+    font-size: 13px;
+    color: var(--body-text);
+    line-height: 1.6;
+    padding: 0 24px;
+  }
+  .home-body b { color: var(--header); font-weight: 600; }
+
+  /* Setting cards */
+  .card { margin-bottom: 20px; }
+  .card-header {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--header);
+    text-shadow: 2px -2px 0 #000;
+    margin-bottom: 6px;
+  }
+  .card-divider {
+    height: 2px;
+    background: var(--divider);
+    margin-bottom: 8px;
+  }
+  .card-desc {
+    font-size: 12px;
+    color: var(--body-text);
+    margin-bottom: 8px;
+    line-height: 1.4;
+  }
+  .card-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .checkbox {
+    width: 16px;
+    height: 16px;
+    border: 2px solid var(--divider);
+    background: #0d0c16;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    flex-shrink: 0;
+  }
+  .checkbox.checked::after {
+    content: "";
+    width: 8px;
+    height: 8px;
+    background: var(--header);
+  }
+  .card-row label { font-size: 13px; color: var(--body-text); cursor: pointer; }
+  select, input[type=text] {
+    background: #0d0c16;
+    border: 2px solid var(--divider);
+    color: var(--body-text);
+    font-size: 12px;
+    padding: 4px 6px;
+  }
+  .btn-link {
+    color: var(--header);
+    font-size: 13px;
+    cursor: pointer;
+    display: inline-block;
+  }
+  .btn-link:hover { color: #fff; }
+  .stat-line { font-size: 12px; color: var(--dim-text); margin-bottom: 10px; }
+
+  .page { display: none; }
+  .page.active { display: block; }
+
+  #note {
+    width: 640px;
+    color: #ccc;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    font-size: 13px;
+    margin-top: 16px;
+    line-height: 1.5;
+  }
+</style>
+</head>
+<body>
+<div>
+  <div id="window">
+    <div id="title">Xal's Emporium</div>
+    <div id="closeBtn">Close</div>
+    <div id="headerDivider"></div>
+
+    <div id="sidebar">
+      <button class="tab" data-page="home">Home</button>
+      <button class="tab" data-page="minimap">Minimap Button</button>
+      <button class="tab" data-page="zonealert">Zone Alert</button>
+      <button class="tab selected" data-page="collection">Collection Window</button>
+      <button class="tab" data-page="data">Data</button>
+    </div>
+    <div id="vDivider"></div>
+
+    <div id="content">
+
+      <div class="page" id="page-home">
+        <div class="home-icon">🏠</div>
+        <div class="home-lead">Track every piece of decor you can collect.</div>
+        <div class="home-rule"></div>
+        <div class="home-body">
+          Xal's Emporium keeps tabs on your account's <b>housing decor</b> collection,
+          shows you what you're still missing, and tells you exactly where to find it —
+          right down to the vendor and coordinates when they're known.
+        </div>
+      </div>
+
+      <div class="page" id="page-minimap">
+        <div class="card">
+          <div class="card-header">Minimap Button</div>
+          <div class="card-divider"></div>
+          <div class="card-desc">Show a button near the minimap for quick access to your collection.</div>
+          <div class="card-row">
+            <div class="checkbox checked"></div>
+            <label>Enabled</label>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header">Lock Position</div>
+          <div class="card-divider"></div>
+          <div class="card-desc">Prevent the minimap button from being dragged around.</div>
+          <div class="card-row">
+            <div class="checkbox"></div>
+            <label>Enabled</label>
+          </div>
+        </div>
+      </div>
+
+      <div class="page" id="page-zonealert">
+        <div class="card">
+          <div class="card-header">Zone Alert Icon</div>
+          <div class="card-divider"></div>
+          <div class="card-desc">Show a floating icon when the zone you're in has decor you're missing.</div>
+          <div class="card-row">
+            <div class="checkbox checked"></div>
+            <label>Enabled</label>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header">Alert Frequency</div>
+          <div class="card-divider"></div>
+          <div class="card-desc">Choose whether the alert shows every time you enter the zone, or only the first time.</div>
+          <div class="card-row">
+            <select>
+              <option>Every time</option>
+              <option selected>Once per visit</option>
+            </select>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header">Icon Size</div>
+          <div class="card-divider"></div>
+          <div class="card-desc">Adjust the size of the floating zone-alert icon.</div>
+          <div class="card-row">
+            <input type="text" value="32px" style="width:60px;">
+          </div>
+        </div>
+      </div>
+
+      <div class="page active" id="page-collection">
+        <div class="card">
+          <div class="card-header">Remember Filters</div>
+          <div class="card-divider"></div>
+          <div class="card-desc">Keep your last search, zone, and missing-only filters the next time you open the collection.</div>
+          <div class="card-row">
+            <div class="checkbox checked"></div>
+            <label>Enabled</label>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header">Default Sort</div>
+          <div class="card-divider"></div>
+          <div class="card-desc">Choose how items are ordered when you open the collection window.</div>
+          <div class="card-row">
+            <select>
+              <option selected>By Category</option>
+              <option>Alphabetical</option>
+            </select>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header">Missing Items</div>
+          <div class="card-divider"></div>
+          <div class="card-desc">Show items you don't own dimmed alongside owned ones, or hide them entirely.</div>
+          <div class="card-row">
+            <select>
+              <option selected>Dimmed</option>
+              <option>Hidden</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="page" id="page-data">
+        <div class="card">
+          <div class="card-header">Scan Status</div>
+          <div class="card-divider"></div>
+          <div class="stat-line">Last scanned: Today, 6:42 PM</div>
+          <div class="btn-link">Rescan Now</div>
+        </div>
+      </div>
+
+    </div>
+    <div id="footer">v1.2.0 &nbsp;&middot;&nbsp; by Xal &nbsp;&middot;&nbsp; A Xal's Creation</div>
+  </div>
+
+  <div id="note">
+    Click the sidebar tabs to switch pages — this is a clickable mock, nothing here is wired to real Lua yet.
+    Colors/layout follow the current family standard: dark brick red (#681417) for headers/selected tab, near-black
+    indigo (#101020) for dividers/card borders, muted blue-gray (#323264) for unselected sidebar tabs, indigo
+    background (#08070f). Home is the about page; every other section uses the standard header → divider →
+    description → control "card" layout.
+  </div>
+</div>
+
+<script>
+document.querySelectorAll('.tab').forEach(tab => {
+  tab.addEventListener('click', () => {
+    document.querySelectorAll('.tab').forEach(t => t.classList.remove('selected'));
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    tab.classList.add('selected');
+    document.getElementById('page-' + tab.dataset.page).classList.add('active');
+  });
+});
+document.querySelectorAll('.checkbox').forEach(cb => {
+  cb.addEventListener('click', () => cb.classList.toggle('checked'));
+});
+</script>
+</body>
+</html>
